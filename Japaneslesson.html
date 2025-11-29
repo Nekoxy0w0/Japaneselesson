@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kursus Bahasa Jepang - Belajar Mudah & Murah</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #296be6;
+            --primary-dark: #1a4db3;
+            --secondary: #ff6b6b;
+            --accent: #ffd166;
+            --light: #f8f9fa;
+            --dark: #333;
+            --success: #28a745;
+            --gray: #6c757d;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 80px 0 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: bottom;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+        
+        .cta-button:hover {
+            background-color: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        /* About Section */
+        #tentang {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .feature {
+            background-color: var(--light);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .feature h3 {
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+        
+        /* Pricing Section */
+        #harga {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+        
+        .pricing-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--success);
+            margin: 20px 0;
+        }
+        
+        .price-period {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+        
+        .benefits {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .benefits li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .benefits li:last-child {
+            border-bottom: none;
+        }
+        
+        .benefits li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+        
+        /* Registration Section */
+        #daftar {
+            background-color: white;
+        }
+        
+        .registration-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .registration-text {
+            flex: 1;
+        }
+        
+        .registration-options {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .registration-option {
+            background-color: var(--light);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .registration-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .whatsapp-contact {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .whatsapp-contact i {
+            font-size: 1.5rem;
+        }
+        
+        /* Testimonials Section */
+        #testimoni {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+        
+        #testimoni .section-title h2 {
+            color: white;
+        }
+        
+        #testimoni .section-title h2::after {
+            background-color: var(--accent);
+        }
+        
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            font-weight: bold;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* FAQ Section */
+        #faq {
+            background-color: var(--light);
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .faq-question {
+            background-color: white;
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question::after {
+            content: "+";
+            font-size: 1.5rem;
+        }
+        
+        .faq-answer {
+            background-color: white;
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+        }
+        
+        .faq-item.active .faq-question::after {
+            content: "-";
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .about-content, .registration-content {
+                flex-direction: column;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Kuasai Bahasa Jepang dengan Mudah</h1>
+                <p class="subtitle">Belajar bahasa Jepang dari nol hingga mahir dengan metode interaktif yang menyenangkan!</p>
+                <a href="#daftar" class="cta-button">Mulai Belajar Sekarang</a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- About Section -->
+    <section id="tentang">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tentang Kursus Kami</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Kami menawarkan kursus bahasa Jepang lengkap dengan materi video, latihan interaktif, dan dukungan tutor profesional. Program kami dirancang khusus untuk pemula dengan fokus pada percakapan sehari-hari, hiragana/katakana, dan kanji dasar.</p>
+                    <p>Dengan metode pembelajaran yang terstruktur dan menyenangkan, Anda akan dapat berbicara bahasa Jepang dengan percaya diri dalam waktu singkat.</p>
+                    
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-video"></i>
+                            <h3>Materi Video</h3>
+                            <p>Video pembelajaran berkualitas tinggi dengan penjelasan yang mudah dipahami</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-comments"></i>
+                            <h3>Kelas Interaktif</h3>
+                            <p>Sesi tanya jawab langsung dengan tutor berpengalaman</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-file-alt"></i>
+                            <h3>Latihan Terstruktur</h3>
+                            <p>Latihan harian dan mingguan untuk mengasah kemampuan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <!-- Placeholder untuk gambar -->
+                    <div style="width:100%; height:300px; background:linear-gradient(135deg, #296be6, #1a4db3); border-radius:10px; display:flex; align-items:center; justify-content:center; color:white; font-size:1.2rem;">
+                        Belajar Bahasa Jepang Menjadi Mudah dan menyenangkan
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing Section -->
+    <section id="harga">
+        <div class="container">
+            <div class="section-title">
+                <h2>Harga Terjangkau</h2>
+            </div>
+            <div class="pricing-card">
+                <h3>Paket</h3>
+                <div class="price">Rp 90.000<span class="price-period">/bulan</span></div>
+                <p>Akses penuh ke semua materi pembelajaran dan fitur</p>
+                
+                <ul class="benefits">
+                    <li>Video Pembelajaran</li>
+                    <li>Latihan Interaktif Harian</li>
+                    <li>Materi Downloadable</li>
+                </ul>
+                
+                <a href="#daftar" class="cta-button">Daftar Sekarang</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section id="testimoni">
+        <div class="container">
+            <div class="section-title">
+                <h2>Apa Kata Siswa Kami</h2>
+            </div>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <p class="testimonial-text">"Kursus ini sangat membantu! Dalam 3 bulan saya sudah bisa percakapan dasar bahasa Jepang. Metode pengajarannya menyenangkan dan dapat dimengerti dengan mudah"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RM</div>
+                        <div class="author-info">
+                            <h4>Rey Muhammad</h4>
+                            <p>Pelajar</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"Saya awalnya kesulitan belajar bahasa Jepang, tapi dengan bimbingan tutor yang sabar dan materi yang terstruktur, sekarang saya lebih percaya diri. Ian ngeri njirr🥶"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AR</div>
+                        <div class="author-info">
+                            <h4>Ahmad Riyawan</h4>
+                            <p>Pelajar</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"Pengajarnya keren, mudah dimengerti untuk pemula. Dedek juga nyenengin waktu ngajar, hehe."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">EY</div>
+                        <div class="author-info">
+                            <h4>Ericka Yuliana</h4>
+                            <p>Mahasiswa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Registration Section -->
+    <section id="daftar">
+        <div class="container">
+            <div class="section-title">
+                <h2>Daftar Sekarang</h2>
+            </div>
+            <div class="registration-content">
+                <div class="registration-text">
+                    <p>Bergabunglah dengan siswa-siswa lain yang telah merasakan manfaat kursus bahasa Jepang kami. Isi formulir pendaftaran di bawah untuk memulai perjalanan belajar Anda.</p>
+                    <p>Kami akan menghubungi Anda via WhatsApp untuk konfirmasi dan informasi lebih lanjut.</p>
+                </div>
+                <div class="registration-options">
+                    <div class="registration-option">
+                        <h3>Daftar via Google Form</h3>
+                        <p>Isi data diri Anda melalui formulir online kami</p>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSct-HmMwtDylmOY8-Nuu-tIe79BzgPLWkIfAoQGo33ssmcnSQ/viewform?usp=dialog" target="_blank" class="cta-button">Isi Formulir</a>
+                    </div>
+                    <div class="registration-option">
+                        <h3>Hubungi Langsung</h3>
+                        <p>Butuh bantuan atau informasi lebih lanjut?</p>
+                        <div class="whatsapp-contact">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>+62 881-8694-489</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pertanyaan Umum</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">Apakah kursus ini cocok untuk pemula?</div>
+                    <div class="faq-answer">
+                        <p>Ya, kursus ini dirancang khusus untuk pemula yang belum memiliki pengetahuan bahasa Jepang sama sekali. Materi dimulai dari pengenalan huruf hiragana dan katakana, kemudian dilanjutkan dengan percakapan dasar.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Berapa lama waktu yang dibutuhkan untuk menyelesaikan kursus?</div>
+                    <div class="faq-answer">
+                        <p>Kursus ini dirancang untuk diselesaikan dalam 6 bulan dengan belajar 2 jam per minggu. Namun, Anda dapat belajar sesuai kecepatan Anda sendiri karena materi dapat diakses kapan saja.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Bagaimana cara pembayarannya?</div>
+                    <div class="faq-answer">
+                        <p>Pembayaran dapat dilakukan melalui transfer bank, e-wallet (GoPay, OVO, Dana), atau minimarket. Instruksi pembayaran lengkap akan dikirimkan setelah Anda mendaftar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kursus Bahasa Jepang</h3>
+                    <p>Belajar bahasa Jepang dengan mudah dan menyenangkan. Metode pembelajaran interaktif yang dirancang untuk pemula.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak Kami</h3>
+                    <p><i class="fas fa-phone"></i> +62 881-8694-489</p>
+                    <p><i class="fas fa-envelope"></i> info@kursusjepang.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Link Cepat</h3>
+                    <a href="#tentang">Tentang Kami</a>
+                    <a href="#harga">Harga</a>
+                    <a href="#testimoni">Testimoni</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="#daftar">Daftar</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Kursus Bahasa Jepang. Semua hak dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // FAQ Toggle Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentNode;
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
